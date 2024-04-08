@@ -1,0 +1,10 @@
+.menuView{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:bisque;
+    width: 100%;
+    height: 100%;
+}
+
