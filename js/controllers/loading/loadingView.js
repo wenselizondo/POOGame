@@ -7,7 +7,7 @@ export class LoadingView extends BaseView{
         super(parent, controller);
         this.className = "loadingView"
         let spinner = div ({className:'loadingView-spinner'},this)
-        span({innerHTML:'loading'},this)
+        span({innerHTML:'getting the last details ready'},this)
 
         gsap.to(spinner,{rotation:360,duration:2,repeat:-1})
     }
