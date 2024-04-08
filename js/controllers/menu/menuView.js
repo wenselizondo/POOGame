@@ -6,8 +6,9 @@ export class MenuView extends BaseView{
     constructor(parent, controller){
         super(parent, controller);
         this.className = "menuView"
-        span({innerHTML:'MEMORY GAME CHALLENGE'},this);
-        span({innerHTML:"¡VEAMOS DE QUE ESTÁS HECHQ@!"},this);
+        span({innerHTML:'Get ready to flex those brain muscles'},this);
+        span({innerHTML:"Let's get started"},this);
+        span({innerHTML:"Can you beat the cool unicorn?"},this);
         new GameButton (this,"INICIO SESION", () => {
             let event = new CustomEvent('goto-state',{
                 detail:{
