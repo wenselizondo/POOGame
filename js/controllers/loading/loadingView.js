@@ -6,7 +6,6 @@ export class LoadingView extends BaseView{
     constructor(parent, controller){
         super(parent, controller);
         this.className = "loadingView"
-        // this.innerHTML = 'Loading...'
         let spinner = div ({className:'loadingView-spinner'},this)
         span({innerHTML:'loading'},this)
 
