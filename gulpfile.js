@@ -5,10 +5,7 @@ const gulp = require("gulp");
 const clean = require('gulp-clean');
 const { rollup } = require('rollup');
 const { terser } = require('rollup-plugin-terser');
-const cleanCSS = require('clean-css');
-const concat = require('gulp-concat');
-var exec = require('child_process').exec;
-var fs = require('fs');
+
 const isDevelopment = true;
 
 function copyFiles() {
@@ -28,11 +25,15 @@ function browsersyncStart(cd) {
 };
 
 function browsersyncReload(cd) {
-    bundleCSS();
-    bundleJS();
     browsersync.reload();
     cd();
 };
+
+// gulp.task('zip', function () {
+//     return gulp.src('./js/*')
+//         .pipe(zip('archive.zip'))
+//         .pipe(gulp.dest('.'));
+// });
 
 function zipFiles() {
     return src('./js/*').pipe(zip('Archive.zip')).pipe(gulp.dest('.'));
@@ -78,56 +79,17 @@ const bundleJS = async function () {
     });
 }
 
-function bundleCSS() {
-
-    const options = {
-        compatibility: '*',
-        inline: ['all'],
-        level: 2
-    };
-
-    return src('css/**/*.css')
-        .pipe(concat('dist/bundle.css'))
-        .on('data', function (file) {
-            const bufferFile = new cleanCSS(options).minify(file.contents)
-            return file.contents = Buffer.from(bufferFile.styles)
-        })
-        .pipe(dest('./'));
-};
-
-function firebase(cb) {
-    exec('firebase deploy', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
-}
-
-exports.deploy = series(
-    bundleCSS,
-    bundleJS,
-    firebase
-);
-
 exports.bundle = series(
-    bundleCSS,
     bundleJS
 );
 
 exports.run = series(
-    bundleCSS,
-    bundleJS,
     browsersyncStart,
     watchTask
 );
 
 exports.clean = series(
-    cleanDistFolder,
-    cleanZip
-);
-
-exports.css = series(
-    bundleCSS
+    cleanDistFolder,cleanZip
 );
 
 exports.zip = series(

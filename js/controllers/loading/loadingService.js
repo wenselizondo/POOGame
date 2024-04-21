@@ -15,6 +15,6 @@ export class LoadingService {
                 composed:false
             });
             this.controller.view.dispatchEvent(event);
-        },500);
+        },1500);
     }
 }

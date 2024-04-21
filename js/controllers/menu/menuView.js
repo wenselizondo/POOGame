@@ -7,9 +7,15 @@ export class MenuView extends BaseView{
         super(parent, controller);
         this.className = "menuView"
         span({innerHTML:'Get ready to flex those brain muscles'},this);
-        span({innerHTML:"Let's get started"},this);
-        span({innerHTML:"Can you beat the cool unicorn?"},this);
-        new GameButton (this,"INICIO SESION", () => {
+        var logo = document.createElement('img');
+        logo.src = 'img/1.png';
+        this.appendChild(logo);
+        logo.style.width ='250px'
+        var beatUnicornBanner = document.createElement('img');
+        beatUnicornBanner.src = 'img/2.png';
+        this.appendChild(beatUnicornBanner);
+        beatUnicornBanner.style.width ='280px'
+        new GameButton (this,"Log In", () => {
             let event = new CustomEvent('goto-state',{
                 detail:{
                     state:LOGIN_STATE
@@ -20,9 +26,11 @@ export class MenuView extends BaseView{
             });
             this.dispatchEvent(event);
         });
-        new GameButton (this,"CATEGORIA", () => {console.log("CATEGORIA")});
-        new GameButton (this,"DIFICULTAD", () => {console.log("DIFICULTAD")});
-        new GameButton (this,"PUNTAJES", () => {console.log("PUNTAJES")});
+        new GameButton (this,"Themes", () => {console.log("Themes")});
+        new GameButton (this,"Level", () => {console.log("Level")});
+        new GameButton (this,"Scores", () => {console.log("Scores")});
+        new GameButton (this,"Credits", () => {console.log("Credits")});
+        new GameButton (this,"PLAY", () => {console.log("PLAY")});
     }
 }
 customElements.define('menu-view',MenuView);
