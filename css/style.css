@@ -1,11 +1,3 @@
-/**
-* @name style.css
-
-
-
-* @author Esteban Padilla ep@estebanpadilla.com
-* @version 1.0.0
-*/
 
 :root {
     --primary-color: #000000;
@@ -44,7 +36,7 @@ button:focus {
 }
 
 .emojis {
-    font-size: 60px;
+    font-size: 70px;
 }
 
 .mainContainer {
